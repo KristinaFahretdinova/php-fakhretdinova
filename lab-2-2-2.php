@@ -40,6 +40,7 @@
 
 	echo('<br>');
 	echo('<br>Массив из уникальных числел:</br>');
-    $m = array_unique($m);
+    
+	array_unique($m);
     for($i = 0; $i < count($m); $i++) echo($m[$i].' ');
 ?>
