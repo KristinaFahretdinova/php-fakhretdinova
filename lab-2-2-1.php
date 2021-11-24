@@ -24,7 +24,6 @@
     for($i = 0; $i < count($rez); $i++) echo($rez[$i].' ');
     echo('<br>');
 
-    $rez1 = array_unique($rez);
-    for($i = 0; $i < count($rez1); $i++) echo($rez1[$i].' ');
-
+    array_unique($rez);
+    for($i = 0; $i < count($rez); $i++) echo($rez[$i].' ');
 ?>
