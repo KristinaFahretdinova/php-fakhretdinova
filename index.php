@@ -1,140 +1,43 @@
-<p> Дата и время:
-<p>
-<?php
-$d=date("d.m.Y H:i");
-echo($d);
-?>
-<ul>
-<br></br>
- <p><b>Лабораторная работа №1</b></p>
- <p>Часть №1. Введение в PHP</p>
-        <li>
-            <a href='/lab-1-1.php'>Упражнение 1-2</a>
-        </li>
-        <li>
-            <a href='/lab-1-2.php'>Упражнение 1-3</a>
-        </li>
-        <li>
-            <a href='/lab-1-3.php'>Упражнение 1-4</a>
-        </li>
-      
-   	  <p>Самостоятельная работа №1</p>
-        <li>
-            <a href='/lab-1-5.php'>Задача 1-1</a>
-        </li>
-		
-	  <p>Часть №2. Управляющие конструкции</p>
-		<li>
-            <a href='/lab-2-1.php'>Упражнение 1-6</a>
-        </li>
-        <li>
-            <a href='/lab-2-2.php'>Упражнение 1-7</a>
-        </li>
-        <li>
-            <a href='/lab-2-3.php'>Упражнение 1-8</a>
-        </li>
-        <li>
-            <a href='/lab-2-4.php'>Упражнение 1-9</a>
-        </li>
-		<li>
-            <a href='/lab-2-5.php'>Упражнение 1-10</a>
-        </li>
-        <li>
-            <a href='/lab-2-6.php'>Упражнение 1-11</a>
-        </li>
-        <li>
-            <a href='/lab-2-7.php'>Упражнение 1-12</a>
-        </li>
-        <li>
-            <a href='/lab-2-8.php'>Упражнение 1-13</a>
-        </li>
-		<li>
-            <a href='/lab-2-9.php'>Упражнение 1-14</a>
-        </li>
-	   <p>Самостоятельная работа №2</p>
-        <li>
-            <a href='/lab-2-10.php'>Задача 1-2</a>
-        </li>
-        <li>
-            <a href='/lab-2-11.php'>Задача 1-3</a>
-        </li>
-        <br>
-		</br>
-		<p><b>Лабораторная работа №2</b></p>
-		<p>Часть №1. Работа с массивами</p>
-		<li>
-            <a href='/lab-2-2-1.php'>Задание 2-1</a>
-        </li>
-        <li>
-            <a href='/lab-2-2-2.php'>Задание 2-2</a>
-        </li>
-        <li>
-            <a href='/lab-2-2-3.php'>Задание 2-3</a>
-        </li>
-		
-  	  <p>Самостоятельная работа</p>
-        <li>
-            <a href='/lab-2-2-4.php'>Задача 2-4</a>
-        </li>
-		
-		<p>Часть №2. Функции пользователя</p>
-		<li>
-            <a href='/lab-2-2-5.php'>Задача 2-5</a>
-        </li>
-        <li>
-            <a href='/lab-2-2-6.php'>Задача 2-6</a>
-        </li>
-		
-		<p><b>Лабораторная работа №3</b></p>
-		<p>Обработка данных форм</p>
-		<li>
-            <a href='/f1.html'>Упражнение 3-1</a>
-        </li>
-        <li>
-            <a href='/f2.html'>Упражнение 3-2</a>
-        </li>
-		<li>
-            <a href='/f3.html'>Упражнение 3-3</a>
-        </li>
-        <li>
-            <a href='/f4.html'>Упражнение 3-4</a>
-        </li>
-		<li>
-            <a href='/f5.html'>Упражнение 3-5</a>
-        </li>
-        <li>
-            <a href='/f6.html'>Упражнение 3-6</a>
-        </li>
-        <li>
-            <a href='/f7.html'>Упражнение 3-7</a>
-        </li>
-		
-  	  <p>Самостоятельная работа</p>
-        <li>
-            <a href='/s3-1.html'>Задача 3-1</a>
-        </li>
-		<li>
-            <a href='/s3-2.html'>Задача 3-2</a>
-        </li>
-		<li>
-            <a href='/s3-3.html'>Задача 3-3</a>
-        </li>
-		<li>
-            <a href='/s3-4.html'>Задача 3-4</a>
-        </li>
-		<li>
-            <a href='/s3-5.html'>Задача 3-5</a>
-        </li>
-		<p>Задача 3-6</p>
-		<li>
-            <a href='/s3-6.1.html'>Вариант 1</a>
-        </li>
-		<li>
-            <a href='/s3-6.3.html'>Вариант 3</a>
-        </li>
-		<li>
-            <a href='/s3-6.4.html'>Вариант 4</a>
-        </li>
-		
-       
-    </ul>
+<?
+require_once 'connect.php'; ?>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сведения о прользователях сайта</title>
+</head>
+<h3>Фахретдинова Кристина</h3>
+<body>
+<table border="1">
+
+    <h2>Зарегистрированные пользователи:</h2>
+    <table border="1">
+        <tr>
+            <th> Имя </th> <th> E-mail </th>
+            <th> Редактировать </th> <th> Уничтожить </th> </tr>
+
+        <?php
+        $link = mysqli_connect($host, $user, $password, $database)
+        or die("Ошибка " . mysqli_error($link));
+
+        $result = mysqli_query($link, "SELECT id_user, user_name, user_e_mail FROM user");// запрос на выборку сведений о пользователях
+        mysqli_select_db($link, "users");
+
+        while ($row= mysqli_fetch_array($result)){// для каждой строки из запроса
+            echo "<tr>";
+            echo "<td>" . $row['user_name'] . "</td>";
+            echo "<td>" . $row['user_e_mail'] . "</td>";
+            echo "<td><a href='edit.php?id=" . $row['id_user'] . "'> Редактировать </a> </td>"; // запуск скрипта для редактирования
+            echo "<td><a href='delete.php?id=" . $row['id_user'] . "'> Удалить </a></td>"; // запуск скрипта для удаления записи
+            echo "</tr>";
+        }
+        print "</table>";
+        $num_rows = mysqli_num_rows($result); // число записей в таблице БД
+        print("<P> Всего пользователей: $num_rows </p>");
+        ?>
+        <p> <a href="new.php"> Добавить пользователя </a>
+        <li><a href="bd_students/index.php">Лабораторная работа № 4.2</a></li>
+     
+        <li><a href="lb5//index.php">Лабораторная работа № 5</a></li>
+</body>
+</html>
