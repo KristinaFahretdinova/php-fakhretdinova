@@ -12,7 +12,7 @@ $id_subject = $_GET['id_subject'];
 $name_subject = $_GET['name_subject'];
 $fio_subject = $_GET['fio_subject'];
 
-$zapros = "UPDATE subject SET name_subject='$name_subject', fio_subjject='$fio_subject' 
+$zapros = "UPDATE subject SET name_subject='$name_subject', fio_subject='$fio_subject' 
 WHERE id_subject='$id_subject'";
 
 $result = $mysqli->query($zapros);
